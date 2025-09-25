@@ -5,6 +5,5 @@ nltk
 matplotlib
 seaborn
 streamlit
-pickle
 string
 Wordcloud
