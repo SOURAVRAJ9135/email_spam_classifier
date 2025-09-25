@@ -2,7 +2,7 @@ numpy
 pandas
 scikit-learn
 nltk
-matplotlib.pyplot
+matplotlib
 seaborn
 streamlit
 pickle
