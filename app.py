@@ -6,18 +6,19 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer,TfidfTransformer
 from sklearn.naive_bayes import GaussianNB,MultinomialNB,BernoulliNB
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
+# Ensure required NLTK resources are present
+resources = ['punkt', 'stopwords']
+for r in resources:
+    try:
+        nltk.data.find(f'tokenizers/{r}' if r == 'punkt' else f'corpora/{r}')
+    except LookupError:
+        nltk.download(r)
 
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords')
+ps = PorterStemmer()
+stop_words = set(stopwords.words('english'))
 
 
-ps=PorterStemmer()
+
 tfidf=pickle.load(open('vectorizer1.pkl','rb'))
 model=pickle.load(open('model_used.pkl','rb')) # multinomial naive bias 
 
